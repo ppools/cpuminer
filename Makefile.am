@@ -13,11 +13,11 @@ AM_CPPFLAGS	= $(PTHREAD_FLAGS) -fno-strict-aliasing $(JANSSON_INCLUDES)
 
 AUTOMAKE_OPTIONS = subdir-objects
 
-bin_PROGRAMS	= unitus_cpuminer
+bin_PROGRAMS	= cpuminer
 
 dist_man_MANS	= minerd.1
 
-unitus_cpuminer_SOURCES	= elist.h miner.h compat.h \
+cpuminer_SOURCES	= elist.h miner.h compat.h \
 		  cpu-miner.c util.c \
 		  sha2.c \
 		  sha3/sph_types.h sha3/aes_helper.c \
@@ -42,24 +42,24 @@ unitus_cpuminer_SOURCES	= elist.h miner.h compat.h \
 		  algo/argon2/encoding.c algo/argon2/enconding.h algo/argon2/opt.c algo/argon2/opt.h algo/argon2/thread.c algo/argon2/thread.h
 if USE_ASM
 if ARCH_x86
-unitus_cpuminer_SOURCES += sha2-x86.S
+cpuminer_SOURCES += sha2-x86.S
 endif
 if ARCH_x86_64
-unitus_cpuminer_SOURCES += sha2-x64.S
+cpuminer_SOURCES += sha2-x64.S
 endif
 if ARCH_ARM
-unitus_cpuminer_SOURCES += sha2-arm.S
+cpuminer_SOURCES += sha2-arm.S
 endif
 if ARCH_PPC
-unitus_cpuminer_SOURCES += sha2-ppc.S
+cpuminer_SOURCES += sha2-ppc.S
 endif
 endif
 
 if HAVE_WINDOWS
-   unitus_cpuminer_SOURCES += compat/winansi.c
+   cpuminer_SOURCES += compat/winansi.c
 endif
 
-unitus_cpuminer_LDFLAGS	= $(PTHREAD_FLAGS)
-unitus_cpuminer_LDADD	= @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@
-unitus_cpuminer_CPPFLAGS = @LIBCURL_CPPFLAGS@
+cpuminer_LDFLAGS	= $(PTHREAD_FLAGS)
+cpuminer_LDADD	= @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@
+cpuminer_CPPFLAGS = @LIBCURL_CPPFLAGS@
 

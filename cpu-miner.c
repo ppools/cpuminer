@@ -39,7 +39,7 @@
 #include "compat.h"
 #include "miner.h"
 
-#define PROGRAM_NAME		"unitus_cpuminer"
+#define PROGRAM_NAME		"cpuminer"
 #define LP_SCANTIME		60
 
 #ifdef __linux /* Linux specific policy and affinity management */
